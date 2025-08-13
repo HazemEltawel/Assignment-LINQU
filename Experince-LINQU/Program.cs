@@ -355,14 +355,20 @@ class Program
 
         #region Get the elements of the array starting from the first element less than its position.
 
-        int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
-         var res = numbers.SkipWhile((n, index) => n >= index);
-        Console.WriteLine("Elements starting from the first element less than its position: ");
-         foreach (var item in res)
-         {
-             Console.WriteLine(item);
-         }
-         
+        //int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+        // var res = numbers.SkipWhile((n, index) => n >= index);
+        //Console.WriteLine("Elements starting from the first element less than its position: ");
+        // foreach (var item in res)
+        // {
+        //     Console.WriteLine(item);
+        // }
+
+        #endregion
+
+        #region Determine if any of the words in dictionary_english.txt (Read dictionary_english.txt into Array of String First) contain the substring 'ei'.
+        string[] words = File.ReadAllLines("dictionary_english.txt");
+        bool contain = words.Any(word=>word.Contains("ei"));
+        Console.WriteLine($"Any word contains 'ei': {contain}");
         #endregion
 
 
