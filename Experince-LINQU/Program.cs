@@ -219,23 +219,37 @@ class Program
 
         #region Get the products with the most expensive price in each category.
 
-        var mostexpensive = from p in ListGenerators.ProductList
+        //var mostexpensive = from p in ListGenerators.ProductList
+        //                    group p by p.Category into g
+        //                    let maxprice = g.Max(p => p.UnitPrice)
+        //                    from p2 in g
+        //                    where p2.UnitPrice == maxprice
+        //                    select new
+        //                    {
+        //                        category = g.Key,
+        //                        prodactName = p2.ProductName,
+        //                        price = p2.UnitPrice
+
+        //                    };
+        //foreach (var item in mostexpensive)
+        //{
+        //    Console.WriteLine(item);
+        //}
+
+        #endregion
+
+        #region  Get the average price of each category's products.
+        var cheapestprice = from p in ListGenerators.ProductList
                             group p by p.Category into g
-                            let maxprice = g.Max(p => p.UnitPrice)
-                            from p2 in g
-                            where p2.UnitPrice == maxprice
                             select new
                             {
-                                category = g.Key,
-                                prodactName = p2.ProductName,
-                                price = p2.UnitPrice
-
+                                Category = g.Key,
+                                cheapestprice = g.Average(p => p.UnitPrice)
                             };
-        foreach (var item in mostexpensive)
+        foreach (var item in cheapestprice)
         {
             Console.WriteLine(item);
         }
-
         #endregion
 
 
