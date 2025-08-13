@@ -151,17 +151,33 @@ class Program
 
         #region Get the total units in stock for each product category.
 
-        var total = from p in ListGenerators.ProductList
-                    group p by p.Category into g
-                    select new
-                    {
-                        Category = g.Key,
-                        TotalUnitsInStock = g.Sum(p => p.UnitsInStock)
-                    };
-        foreach (var item in total)
+        //var total = from p in ListGenerators.ProductList
+        //            group p by p.Category into g
+        //            select new
+        //            {
+        //                Category = g.Key,
+        //                TotalUnitsInStock = g.Sum(p => p.UnitsInStock)
+        //            };
+        //foreach (var item in total)
+        //{
+        //    Console.WriteLine(item);
+        //}
+
+        #endregion
+
+        #region Get the cheapest price among each category's products
+        var cheapestprice = from p in ListGenerators.ProductList
+                            group p by p.Category into g
+                            select new
+                            {
+                                Category = g.Key,
+                                cheapestprice = g.Min( p => p.UnitPrice)
+                            };
+        foreach (var item in cheapestprice)
         {
-            Console.WriteLine(i);
+            Console.WriteLine(item);
         }
+
 
         #endregion
 
