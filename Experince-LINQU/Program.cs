@@ -373,20 +373,40 @@ class Program
 
         #region  Return a grouped a list of products only for categories that have at least one product that is out of stock.
 
-        var ground = from p in ListGenerators.ProductList
-                     where p.UnitsInStock == 0
-                     group p by p.Category into g
-                     select new
-                     {
-                         category = g.Key,
-                         Products = g.ToList()
-                     };
-        foreach (var item in ground)
+        //var ground = from p in ListGenerators.ProductList
+        //             where p.UnitsInStock == 0
+        //             group p by p.Category into g
+        //             select new
+        //             {
+        //                 category = g.Key,
+        //                 Products = g.ToList()
+        //             };
+        //foreach (var item in ground)
+        //    {
+        //    Console.WriteLine($"Category: {item.category}");
+        //    foreach (var product in item.Products)
+        //    {
+        //        Console.WriteLine($"  Product: {product.ProductName}, Units In Stock: {product.UnitsInStock}");
+        //    }
+        //}
+        #endregion
+
+        #region   Return a grouped a list of products only for categories that have all of their products in stock.
+
+        var grouped = ListGenerators.ProductList
+             .GroupBy(p => p.Category)
+             .Where(g => g.All(p => p.UnitsInStock > 0)) 
+             .Select(g => new
+             {
+                 Category = g.Key,
+                 Products = g.ToList()
+             });
+        foreach (var category in grouped)
+        {
+            Console.WriteLine($"Category: {category.Category}");
+            foreach (var product in category.Products)
             {
-            Console.WriteLine($"Category: {item.category}");
-            foreach (var product in item.Products)
-            {
-                Console.WriteLine($"  Product: {product.ProductName}, Units In Stock: {product.UnitsInStock}");
+                Console.WriteLine($"   {product.ProductName} - Units in Stock: {product.UnitsInStock}");
             }
         }
         #endregion
