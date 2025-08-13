@@ -1,4 +1,5 @@
 ﻿using Assignment_LINQU;
+using System;
 using System.Linq;
 using System.Security.Cryptography;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -318,16 +319,27 @@ class Program
 
         #region Get all but the first 2 orders from customers in Washington.
 
-        var order =
-           (from c in ListGenerators.CustomerList
-            where c.Region == "WA"
-            from o in c.Orders
-            select o).Skip(2);
-       Console.WriteLine("First 3 orders from customers in Washington: ");
-       foreach (var item in order)
-       {
-           Console.WriteLine(item);
-       }
+        // var order =
+        //    (from c in ListGenerators.CustomerList
+        //     where c.Region == "WA"
+        //     from o in c.Orders
+        //     select o).Skip(2);
+        //Console.WriteLine("First 3 orders from customers in Washington: ");
+        //foreach (var item in order)
+        //{
+        //    Console.WriteLine(item);
+        //}
+        #endregion
+
+        #region Return elements starting from the beginning of the array until a number is hit that is less than its position in the array.Return elements starting from the beginning of the array until a number is hit that is less than its position in the array.
+          int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+        var res = numbers.TakeWhile((num, Index) => num >= Index);
+
+        foreach (var item in res)
+        {
+            Console.WriteLine($"Elements until a number is hit that is less than its position: {item}");
+        }
+
         #endregion
 
 
