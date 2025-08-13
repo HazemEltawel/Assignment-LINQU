@@ -29,18 +29,42 @@ class Program
 
         #region  Returns digits whose name is shorter than their ==> value. String [] Arr = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
 
-        String[] Arr = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+        //String[] Arr = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
 
-        var shorterNames =
-        from digit in Arr.Select((name, Index) => new {Name = name ,Value = Index})
-        where digit.Name.Length < digit.Value
-        select digit;
+        //var shorterNames =
+        //from digit in Arr.Select((name, Index) => new {Name = name ,Value = Index})
+        //where digit.Name.Length < digit.Value
+        //select digit;
 
-        foreach (var item in shorterNames)
-        {
-            Console.WriteLine(item);
-        }
+        //foreach (var item in shorterNames)
+        //{
+        //    Console.WriteLine(item);
+        //}
         #endregion
+
+        #region Get first Product out of Stock 
+
+        var firstProduct = ListGenerators.ProductList.Where(p => p.UnitsInStock == 0).First();
+       
+        Console.WriteLine(firstProduct);
+
+        #endregion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     }
