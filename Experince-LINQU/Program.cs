@@ -112,11 +112,19 @@ class Program
 
         #region Get the total of the numbers in an array.
 
-        int[] Arr = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
-        var total = Arr.Sum();
-        Console.WriteLine($"Total => {total}");
+        //int[] Arr = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+        //var total = Arr.Sum();
+        //Console.WriteLine($"Total => {total}");
 
         #endregion
+
+        #region Get the total number of characters of all words in dictionary_english.txt
+
+        string[] words = File.ReadAllLines("dictionary_english.txt");
+        int totalchar = words.Sum(word => word.Length);
+        Console.WriteLine($"Total characters in  {totalchar}");
+        #endregion
+
 
 
 
