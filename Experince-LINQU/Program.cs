@@ -264,14 +264,24 @@ class Program
 
         #region Produce a Sequence containing the unique first letter from both product and customer names.
 
-        var uniquelatter = ListGenerators.ProductList.Select(p => p.ProductName[0])
-                                                     .Concat(ListGenerators.CustomerList.Select(c => c.CustomerName[0])
-                                                     ).Distinct();
-        foreach (var item in uniquelatter)
+        //var uniquelatter = ListGenerators.ProductList.Select(p => p.ProductName[0])
+        //                                             .Concat(ListGenerators.CustomerList.Select(c => c.CustomerName[0])
+        //                                             ).Distinct();
+        //foreach (var item in uniquelatter)
+        //{
+        //    Console.WriteLine(item);
+        //}
+
+        #endregion
+
+        #region Produce a Sequence containing the unique first letter from both product and customer names.
+
+        var commonFirstLetters = ListGenerators.ProductList.Select(p => p.ProductName[0])
+                                                           .Intersect(ListGenerators.ProductList.Select(c => c.ProductName[0]));
+        foreach (var item in commonFirstLetters)
         {
             Console.WriteLine(item);
         }
-
         #endregion
 
 
