@@ -97,16 +97,24 @@ class Program
 
         #region Return a list of categories and how many products each has
 
-        var categoriesproducts= ListGenerators.ProductList.GroupBy(p=>p.Category).Select(c => new
-        {
-            Category = c.Key,
-            Count = c.Count()
-        });
+        //var categoriesproducts= ListGenerators.ProductList.GroupBy(p=>p.Category).Select(c => new
+        //{
+        //    Category = c.Key,
+        //    Count = c.Count()
+        //});
 
-        foreach (var item in categoriesproducts)
-        {
-            Console.WriteLine(item);
-        }
+        //foreach (var item in categoriesproducts)
+        //{
+        //    Console.WriteLine(item);
+        //}
+
+        #endregion
+
+        #region Get the total of the numbers in an array.
+
+        int[] Arr = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+        var total = Arr.Sum();
+        Console.WriteLine($"Total => {total}");
 
         #endregion
 
