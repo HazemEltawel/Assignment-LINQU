@@ -166,13 +166,35 @@ class Program
         #endregion
 
         #region Get the cheapest price among each category's products
+        //var cheapestprice = from p in ListGenerators.ProductList
+        //                    group p by p.Category into g
+        //                    select new
+        //                    {
+        //                        Category = g.Key,
+        //                        cheapestprice = g.Min( p => p.UnitPrice)
+        //                    };
+        //foreach (var item in cheapestprice)
+        //{
+        //    Console.WriteLine(item);
+        //}
+
+
+        #endregion
+
+        #region Get the products with the cheapest price in each category (Use Let)
         var cheapestprice = from p in ListGenerators.ProductList
                             group p by p.Category into g
+                            let cheape = g.Min(p => p.UnitPrice)
+                            from p2 in g
+                            where p2.UnitPrice == cheape
                             select new
                             {
                                 Category = g.Key,
-                                cheapestprice = g.Min( p => p.UnitPrice)
+                                CheapestPrice = cheape,
+                                price=p2.UnitPrice
                             };
+
+
         foreach (var item in cheapestprice)
         {
             Console.WriteLine(item);
@@ -180,6 +202,20 @@ class Program
 
 
         #endregion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
