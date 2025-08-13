@@ -332,14 +332,25 @@ class Program
         #endregion
 
         #region Return elements starting from the beginning of the array until a number is hit that is less than its position in the array.Return elements starting from the beginning of the array until a number is hit that is less than its position in the array.
-          int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
-        var res = numbers.TakeWhile((num, Index) => num >= Index);
+        //  int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+        //var res = numbers.TakeWhile((num, Index) => num >= Index);
 
-        foreach (var item in res)
-        {
-            Console.WriteLine($"Elements until a number is hit that is less than its position: {item}");
-        }
+        //foreach (var item in res)
+        //{
+        //    Console.WriteLine($"Elements until a number is hit that is less than its position: {item}");
+        //}
 
+        #endregion
+
+        #region Get the elements of the array starting from the first element divisible by 3.
+        int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+         var res = numbers.SkipWhile(n=>n %3 != 0 );
+         
+         foreach (var item in res)
+         {
+             Console.WriteLine($"Elements starting from the first element divisible by 3: {item}");
+         }
+         
         #endregion
 
 
