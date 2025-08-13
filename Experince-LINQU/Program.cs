@@ -366,9 +366,29 @@ class Program
         #endregion
 
         #region Determine if any of the words in dictionary_english.txt (Read dictionary_english.txt into Array of String First) contain the substring 'ei'.
-        string[] words = File.ReadAllLines("dictionary_english.txt");
-        bool contain = words.Any(word=>word.Contains("ei"));
-        Console.WriteLine($"Any word contains 'ei': {contain}");
+        //string[] words = File.ReadAllLines("dictionary_english.txt");
+        //bool contain = words.Any(word=>word.Contains("ei"));
+        //Console.WriteLine($"Any word contains 'ei': {contain}");
+        #endregion
+
+        #region  Return a grouped a list of products only for categories that have at least one product that is out of stock.
+
+        var ground = from p in ListGenerators.ProductList
+                     where p.UnitsInStock == 0
+                     group p by p.Category into g
+                     select new
+                     {
+                         category = g.Key,
+                         Products = g.ToList()
+                     };
+        foreach (var item in ground)
+            {
+            Console.WriteLine($"Category: {item.category}");
+            foreach (var product in item.Products)
+            {
+                Console.WriteLine($"  Product: {product.ProductName}, Units In Stock: {product.UnitsInStock}");
+            }
+        }
         #endregion
 
 
