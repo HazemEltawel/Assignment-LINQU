@@ -343,12 +343,24 @@ class Program
         #endregion
 
         #region Get the elements of the array starting from the first element divisible by 3.
+        //int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+        // var res = numbers.SkipWhile(n=>n %3 != 0 );
+
+        // foreach (var item in res)
+        // {
+        //     Console.WriteLine($"Elements starting from the first element divisible by 3: {item}");
+        // }
+
+        #endregion
+
+        #region Get the elements of the array starting from the first element less than its position.
+
         int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
-         var res = numbers.SkipWhile(n=>n %3 != 0 );
-         
+         var res = numbers.SkipWhile((n, index) => n >= index);
+        Console.WriteLine("Elements starting from the first element less than its position: ");
          foreach (var item in res)
          {
-             Console.WriteLine($"Elements starting from the first element divisible by 3: {item}");
+             Console.WriteLine(item);
          }
          
         #endregion
