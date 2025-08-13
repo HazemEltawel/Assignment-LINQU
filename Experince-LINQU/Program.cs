@@ -5,15 +5,25 @@ class Program
 {
     static void Main(string[] args)
     {
-        #region Find all products that are out of stock. 
-        var outstock = from p in ListGenerators.ProductList
-                       where p.UnitsInStock == 0
-                       select p;
-        foreach (var item in outstock)
-        {
-            Console.WriteLine(item);
-        }
+        #region Find all products that are out of stock.
+        //var outstock = from p in ListGenerators.ProductList
+        //               where p.UnitsInStock == 0
+        //               select p;
+        //foreach (var item in outstock)
+        //{
+        //    Console.WriteLine(item);
+        //}
         #endregion
+        #region Find all products that are in stock and cost more than 3.00 per unit.
 
+        var outstock= from p in ListGenerators.ProductList
+                      where p.UnitsInStock>0&&p.UnitPrice > 3.00m
+                      select p;
+
+        foreach (var item in outstock)
+         {
+             Console.WriteLine(item);
+         }
+        #endregion
     }
 }
