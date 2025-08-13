@@ -127,8 +127,16 @@ class Program
 
         #region Get the length of the shortest word in dictionary_english.txt (Read dictionary_english.txt into Array of String First).
 
+        //string[]Words= File.ReadAllLines("dictionary_english.txt");
+        //var shortword=Words.Min(word=> word.Length);
+        //Console.WriteLine($"Length of the shortest word: {shortword}");
+
+
+        #endregion
+        #region Get the length of the longest word in dictionary_english.txt (Read dictionary_english.txt into Array of String First).
+
         string[]Words= File.ReadAllLines("dictionary_english.txt");
-        var shortword=Words.Min(word=> word.Length);
+        var shortword=Words.Max(word=> word.Length);
         Console.WriteLine($"Length of the shortest word: {shortword}");
 
 
