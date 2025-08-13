@@ -44,9 +44,16 @@ class Program
 
         #region Get first Product out of Stock 
 
-        var firstProduct = ListGenerators.ProductList.Where(p => p.UnitsInStock == 0).First();
-       
-        Console.WriteLine(firstProduct);
+        //var firstProduct = ListGenerators.ProductList.Where(p => p.UnitsInStock == 0).First();
+
+        //Console.WriteLine(firstProduct);
+
+        #endregion
+
+        #region Return the first product whose Price > 1000, unless there is no match, in which case null is returned.
+
+        var firstproduct = ListGenerators.ProductList.FirstOrDefault(p => p.UnitPrice > 1000);
+        Console.WriteLine(firstproduct);
 
         #endregion
 
