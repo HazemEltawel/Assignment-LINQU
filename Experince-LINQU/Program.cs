@@ -82,13 +82,28 @@ class Program
 
         #region Return a list of customers and how many orders each has.
 
-        var customersorders = ListGenerators.CustomerList.Select(c => new
-        {
-            Customer = c.CustomerName,
-            Order = c.Orders.Count()
+        //var customersorders = ListGenerators.CustomerList.Select(c => new
+        //{
+        //    Customer = c.CustomerName,
+        //    Order = c.Orders.Count()
 
+        //});
+        //foreach (var item in customersorders)
+        //{
+        //    Console.WriteLine(item);
+        //}
+
+        #endregion
+
+        #region Return a list of categories and how many products each has
+
+        var categoriesproducts= ListGenerators.ProductList.GroupBy(p=>p.Category).Select(c => new
+        {
+            Category = c.Key,
+            Count = c.Count()
         });
-        foreach (var item in customersorders)
+
+        foreach (var item in categoriesproducts)
         {
             Console.WriteLine(item);
         }
