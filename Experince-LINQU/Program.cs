@@ -120,9 +120,18 @@ class Program
 
         #region Get the total number of characters of all words in dictionary_english.txt
 
-        string[] words = File.ReadAllLines("dictionary_english.txt");
-        int totalchar = words.Sum(word => word.Length);
-        Console.WriteLine($"Total characters in  {totalchar}");
+        //string[] words = File.ReadAllLines("dictionary_english.txt");
+        //int totalchar = words.Sum(word => word.Length);
+        //Console.WriteLine($"Total characters in  {totalchar}");
+        #endregion
+
+        #region Get the length of the shortest word in dictionary_english.txt (Read dictionary_english.txt into Array of String First).
+
+        string[]Words= File.ReadAllLines("dictionary_english.txt");
+        var shortword=Words.Min(word=> word.Length);
+        Console.WriteLine($"Length of the shortest word: {shortword}");
+
+
         #endregion
 
 
