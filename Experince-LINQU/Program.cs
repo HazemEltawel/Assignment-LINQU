@@ -304,16 +304,30 @@ class Program
 
         #region Get the first 3 orders from customers in Washington
 
+        //var order =
+        //    (from c in ListGenerators.CustomerList
+        //     where c.Region == "WA"
+        //     from o in c.Orders
+        //     select o).Take(3);
+        //Console.WriteLine("First 3 orders from customers in Washington: ");
+        //foreach (var item in order)
+        //{
+        //    Console.WriteLine(item);
+        //}
+        #endregion
+
+        #region Get all but the first 2 orders from customers in Washington.
+
         var order =
-            (from c in ListGenerators.CustomerList
-             where c.Region == "WA"
-             from o in c.Orders
-             select o).Take(3);
-        Console.WriteLine("First 3 orders from customers in Washington: ");
-        foreach (var item in order)
-        {
-            Console.WriteLine(item);
-        }
+           (from c in ListGenerators.CustomerList
+            where c.Region == "WA"
+            from o in c.Orders
+            select o).Skip(2);
+       Console.WriteLine("First 3 orders from customers in Washington: ");
+       foreach (var item in order)
+       {
+           Console.WriteLine(item);
+       }
         #endregion
 
 
