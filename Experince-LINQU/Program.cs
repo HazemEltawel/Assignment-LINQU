@@ -239,19 +239,28 @@ class Program
         #endregion
 
         #region  Get the average price of each category's products.
-        var cheapestprice = from p in ListGenerators.ProductList
-                            group p by p.Category into g
-                            select new
-                            {
-                                Category = g.Key,
-                                cheapestprice = g.Average(p => p.UnitPrice)
-                            };
-        foreach (var item in cheapestprice)
+        //var cheapestprice = from p in ListGenerators.ProductList
+        //                    group p by p.Category into g
+        //                    select new
+        //                    {
+        //                        Category = g.Key,
+        //                        cheapestprice = g.Average(p => p.UnitPrice)
+        //                    };
+        //foreach (var item in cheapestprice)
+        //{
+        //    Console.WriteLine(item);
+        //}
+        #endregion
+
+        #region Find the unique Category names from Product List
+
+        var unique = ListGenerators.ProductList.Select(p => p.Category).Distinct();
+        foreach (var item in unique)
         {
             Console.WriteLine(item);
         }
-        #endregion
 
+        #endregion
 
 
 
