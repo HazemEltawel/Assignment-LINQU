@@ -71,14 +71,27 @@ class Program
 
         #region Uses Count to get the number of odd numbers in the array
 
-        int[] Arr = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
-        var oodCount=(from n in Arr
-                      where n % 2 != 0
-                      select n).Count();
+        //int[] Arr = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+        //var oodCount=(from n in Arr
+        //              where n % 2 != 0
+        //              select n).Count();
 
-        Console.WriteLine(oodCount);
+        //Console.WriteLine(oodCount);
 
+        #endregion
 
+        #region Return a list of customers and how many orders each has.
+
+        var customersorders = ListGenerators.CustomerList.Select(c => new
+        {
+            Customer = c.CustomerName,
+            Order = c.Orders.Count()
+
+        });
+        foreach (var item in customersorders)
+        {
+            Console.WriteLine(item);
+        }
 
         #endregion
 
