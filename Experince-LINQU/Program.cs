@@ -285,15 +285,22 @@ class Program
         #endregion
 
         #region Create one sequence that contains the first letters of product names that are not also first letters of customer names.
-        var commonFirstLetters = ListGenerators.ProductList.Select(p => p.ProductName[0])
-                                                           .Except(ListGenerators.ProductList.Select(c => c.ProductName[0]));
+        //var commonFirstLetters = ListGenerators.ProductList.Select(p => p.ProductName[0])
+        //                                                   .Except(ListGenerators.ProductList.Select(c => c.ProductName[0]));
+        //foreach (var item in commonFirstLetters)
+        //{
+        //    Console.WriteLine(item);
+        //}
+        #endregion
+
+        #region  Create one sequence that contains the last Three Characters in each name of all customers and products, including any duplicates
+        var commonFirstLetters = ListGenerators.ProductList.Select(p => p.ProductName.Substring(Math.Max(0, p.ProductName.Length - 3)))
+            .Concat(ListGenerators.CustomerList.Select(c => c.CustomerName.Substring(Math.Max(0, c.CustomerName.Length - 3))));
         foreach (var item in commonFirstLetters)
         {
             Console.WriteLine(item);
         }
         #endregion
-
-
 
 
 
