@@ -276,15 +276,22 @@ class Program
 
         #region Produce a Sequence containing the unique first letter from both product and customer names.
 
+        //var commonFirstLetters = ListGenerators.ProductList.Select(p => p.ProductName[0])
+        //                                                   .Intersect(ListGenerators.ProductList.Select(c => c.ProductName[0]));
+        //foreach (var item in commonFirstLetters)
+        //{
+        //    Console.WriteLine(item);
+        //}
+        #endregion
+
+        #region Create one sequence that contains the first letters of product names that are not also first letters of customer names.
         var commonFirstLetters = ListGenerators.ProductList.Select(p => p.ProductName[0])
-                                                           .Intersect(ListGenerators.ProductList.Select(c => c.ProductName[0]));
+                                                           .Except(ListGenerators.ProductList.Select(c => c.ProductName[0]));
         foreach (var item in commonFirstLetters)
         {
             Console.WriteLine(item);
         }
         #endregion
-
-
 
 
 
