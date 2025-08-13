@@ -52,8 +52,18 @@ class Program
 
         #region Return the first product whose Price > 1000, unless there is no match, in which case null is returned.
 
-        var firstproduct = ListGenerators.ProductList.FirstOrDefault(p => p.UnitPrice > 1000);
-        Console.WriteLine(firstproduct);
+        //var firstproduct = ListGenerators.ProductList.FirstOrDefault(p => p.UnitPrice > 1000);
+        //Console.WriteLine(firstproduct);
+
+        #endregion
+
+        #region Retrieve the second number greater than 5 
+
+        int[] numbers= { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 }; 
+
+        var secondNumber=numbers.Where(n=> n > 5).Skip(1).FirstOrDefault();
+        Console.WriteLine(secondNumber);
+
 
         #endregion
 
