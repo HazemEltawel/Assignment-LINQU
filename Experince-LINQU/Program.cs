@@ -294,15 +294,27 @@ class Program
         #endregion
 
         #region  Create one sequence that contains the last Three Characters in each name of all customers and products, including any duplicates
-        var commonFirstLetters = ListGenerators.ProductList.Select(p => p.ProductName.Substring(Math.Max(0, p.ProductName.Length - 3)))
-            .Concat(ListGenerators.CustomerList.Select(c => c.CustomerName.Substring(Math.Max(0, c.CustomerName.Length - 3))));
-        foreach (var item in commonFirstLetters)
+        //var commonFirstLetters = ListGenerators.ProductList.Select(p => p.ProductName.Substring(Math.Max(0, p.ProductName.Length - 3)))
+        //    .Concat(ListGenerators.CustomerList.Select(c => c.CustomerName.Substring(Math.Max(0, c.CustomerName.Length - 3))));
+        //foreach (var item in commonFirstLetters)
+        //{
+        //    Console.WriteLine(item);
+        //}
+        #endregion
+
+        #region Get the first 3 orders from customers in Washington
+
+        var order =
+            (from c in ListGenerators.CustomerList
+             where c.Region == "WA"
+             from o in c.Orders
+             select o).Take(3);
+        Console.WriteLine("First 3 orders from customers in Washington: ");
+        foreach (var item in order)
         {
             Console.WriteLine(item);
         }
         #endregion
-
-
 
 
 
