@@ -182,24 +182,59 @@ class Program
         #endregion
 
         #region Get the products with the cheapest price in each category (Use Let)
-        var cheapestprice = from p in ListGenerators.ProductList
+        //var cheapestprice = from p in ListGenerators.ProductList
+        //                    group p by p.Category into g
+        //                    let cheape = g.Min(p => p.UnitPrice)
+        //                    from p2 in g
+        //                    where p2.UnitPrice == cheape
+        //                    select new
+        //                    {
+        //                        Category = g.Key,
+        //                        CheapestPrice = cheape,
+        //                        price=p2.UnitPrice
+        //                    };
+
+
+        //foreach (var item in cheapestprice)
+        //{
+        //    Console.WriteLine(item);
+        //}
+
+
+        #endregion
+
+        #region Get the most expensive price among each category's products.
+        //var cheapestprice = from p in ListGenerators.ProductList
+        //                    group p by p.Category into g
+        //                    select new
+        //                    {
+        //                        Category = g.Key,
+        //                        cheapestprice = g.Max(p => p.UnitPrice)
+        //                    };
+        //foreach (var item in cheapestprice)
+        //{
+        //    Console.WriteLine(item);
+        //}
+        #endregion
+
+        #region Get the products with the most expensive price in each category.
+
+        var mostexpensive = from p in ListGenerators.ProductList
                             group p by p.Category into g
-                            let cheape = g.Min(p => p.UnitPrice)
+                            let maxprice = g.Max(p => p.UnitPrice)
                             from p2 in g
-                            where p2.UnitPrice == cheape
+                            where p2.UnitPrice == maxprice
                             select new
                             {
-                                Category = g.Key,
-                                CheapestPrice = cheape,
-                                price=p2.UnitPrice
+                                category = g.Key,
+                                prodactName = p2.ProductName,
+                                price = p2.UnitPrice
+
                             };
-
-
-        foreach (var item in cheapestprice)
+        foreach (var item in mostexpensive)
         {
             Console.WriteLine(item);
         }
-
 
         #endregion
 
