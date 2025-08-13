@@ -144,12 +144,26 @@ class Program
         #endregion
 
         #region Get the average length of the words in dictionary_english.txt (Read dictionary_english.txt into Array of String First).
-        string[]Words= File.ReadAllLines("dictionary_english.txt");
-        var shortword=Words.Average(word=> word.Length);
-        Console.WriteLine($"Length of the shortest word: {shortword}");
+        //string[]Words= File.ReadAllLines("dictionary_english.txt");
+        //var shortword=Words.Average(word=> word.Length);
+        //Console.WriteLine($"Length of the shortest word: {shortword}");
         #endregion
 
+        #region Get the total units in stock for each product category.
 
+        var total = from p in ListGenerators.ProductList
+                    group p by p.Category into g
+                    select new
+                    {
+                        Category = g.Key,
+                        TotalUnitsInStock = g.Sum(p => p.UnitsInStock)
+                    };
+        foreach (var item in total)
+        {
+            Console.WriteLine(i);
+        }
+
+        #endregion
 
 
 
