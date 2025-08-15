@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Intrinsics.X86;
 using System.Security.Cryptography;
+using static System.Net.Mime.MediaTypeNames;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 class Program
@@ -414,16 +416,53 @@ class Program
 
         #region Use group by to partition a list of numbers by their remainder when divided by 5
 
-        List<int> numbers = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+        //List<int> numbers = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
 
-        var partition = numbers.GroupBy(n => n % 5 );
+        //var partition = numbers.GroupBy(n => n % 5 );
+
+        //foreach (var item in partition)
+        //{
+        //    Console.WriteLine($"Remainder {item.Key}: {string.Join(", ", item)}");
+        //    Console.WriteLine();
+        //}
+        #endregion
+
+        #region Uses group by to partition a list of words by their first letter. Use dictionary_english.txt for Input
+
+        string[] words= File.ReadAllLines("dictionary_english.txt");
+
+        var partition = words.GroupBy(word => word[0].ToString().ToUpper());
 
         foreach (var item in partition)
         {
-            Console.WriteLine($"Remainder {item.Key}: {string.Join(", ", item)}");
-            Console.WriteLine();
+            Console.WriteLine($"First Letter {item.Key}: {string.Join(", ", item)}");
         }
+        
         #endregion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
