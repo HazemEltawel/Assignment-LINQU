@@ -45,6 +45,7 @@ namespace Assignment_LINQU
         public override string ToString()
             => $"{CustomerID}, {CustomerName}, {Address}, {City}, {Region}, {PostalCode}, {Country}, {Phone}, {Fax}";
     }
+
    public class Order
     {
 
