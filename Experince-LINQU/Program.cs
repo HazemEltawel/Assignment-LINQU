@@ -442,20 +442,30 @@ class Program
 
         #region Consider this Array as an Input
 
-        string[] Arr = { "from", "salt", "earn", " last", "near", "form" };
+        //string[] Arr = { "from", "salt", "earn", " last", "near", "form" };
 
-        var anagrams = Arr.GroupBy(word => string.Concat(word.OrderBy(c => c)));
+        //var anagrams = Arr.GroupBy(word => string.Concat(word.OrderBy(c => c)));
 
-        foreach (var group in anagrams)
+        //foreach (var group in anagrams)
+        //{
+        //    Console.WriteLine($"Anagram Group: {group.Key}");
+        //    foreach (var word in group)
+        //    {
+        //        Console.WriteLine($"  {word}");
+        //    }
+        //}
+
+        #endregion
+
+        #region Return a sequence of just the names of a list of products.
+
+        var prodactName = from p in ListGenerators.ProductList
+                          select p.ProductName;
+
+        foreach (var item in prodactName)
         {
-            Console.WriteLine($"Anagram Group: {group.Key}");
-            foreach (var word in group)
-            {
-                Console.WriteLine($"  {word}");
-            }
+            Console.WriteLine(item);
         }
-
-
         #endregion
 
 
