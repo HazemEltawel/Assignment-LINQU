@@ -470,22 +470,37 @@ class Program
 
         #region Produce a sequence of the uppercase and lowercase versions of each word in the original array (Anonymous Types).
 
-        string[] words = { "aPPLE", "BlUeBeRrY", "cHeRry" };
+        //string[] words = { "aPPLE", "BlUeBeRrY", "cHeRry" };
 
-        var upercaseandlowecase = words.Select(words => new
-        {
-            Upercase = words.ToUpper(),
-            Lowercase = words.ToLower()
-        });
+        //var upercaseandlowecase = words.Select(words => new
+        //{
+        //    Upercase = words.ToUpper(),
+        //    Lowercase = words.ToLower()
+        //});
 
-        foreach (var item in upercaseandlowecase)
-        {
-            Console.WriteLine($"Upercase: {item.Upercase} ");
-            Console.WriteLine($"Lowercase: {item.Lowercase}");
-            Console.WriteLine();
-        }
+        //foreach (var item in upercaseandlowecase)
+        //{
+        //    Console.WriteLine($"Upercase: {item.Upercase} ");
+        //    Console.WriteLine($"Lowercase: {item.Lowercase}");
+        //    Console.WriteLine();
+        //}
         #endregion
 
+        #region  Produce a sequence containing some properties of Products, including UnitPrice which is renamed to Price in the resulting type.
+
+        var productDetails = ListGenerators.ProductList.Select(p => new
+        {
+            p.ProductName,
+            p.Category,
+            Price = p.UnitPrice, 
+            p.UnitsInStock
+        });
+        foreach (var item in productDetails)
+        {
+            Console.WriteLine($"Product Name: {item.ProductName}, Category: {item.Category}, Price: {item.Price}, Units In Stock: {item.UnitsInStock}");
+        }
+
+        #endregion
 
 
 
