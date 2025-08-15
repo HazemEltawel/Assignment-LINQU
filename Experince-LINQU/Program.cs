@@ -429,18 +429,34 @@ class Program
 
         #region Uses group by to partition a list of words by their first letter. Use dictionary_english.txt for Input
 
-        string[] words= File.ReadAllLines("dictionary_english.txt");
+        //string[] words= File.ReadAllLines("dictionary_english.txt");
 
-        var partition = words.GroupBy(word => word[0].ToString().ToUpper());
+        //var partition = words.GroupBy(word => word[0].ToString().ToUpper());
 
-        foreach (var item in partition)
-        {
-            Console.WriteLine($"First Letter {item.Key}: {string.Join(", ", item)}");
-        }
-        
+        //foreach (var item in partition)
+        //{
+        //    Console.WriteLine($"First Letter {item.Key}: {string.Join(", ", item)}");
+        //}
+
         #endregion
 
+        #region Consider this Array as an Input
 
+        string[] Arr = { "from", "salt", "earn", " last", "near", "form" };
+
+        var anagrams = Arr.GroupBy(word => string.Concat(word.OrderBy(c => c)));
+
+        foreach (var group in anagrams)
+        {
+            Console.WriteLine($"Anagram Group: {group.Key}");
+            foreach (var word in group)
+            {
+                Console.WriteLine($"  {word}");
+            }
+        }
+
+
+        #endregion
 
 
 
