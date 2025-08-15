@@ -1,5 +1,6 @@
 ﻿using Assignment_LINQU;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -393,21 +394,34 @@ class Program
 
         #region   Return a grouped a list of products only for categories that have all of their products in stock.
 
-        var grouped = ListGenerators.ProductList
-             .GroupBy(p => p.Category)
-             .Where(g => g.All(p => p.UnitsInStock > 0)) 
-             .Select(g => new
-             {
-                 Category = g.Key,
-                 Products = g.ToList()
-             });
-        foreach (var category in grouped)
+        //var grouped = ListGenerators.ProductList
+        //     .GroupBy(p => p.Category)
+        //     .Where(g => g.All(p => p.UnitsInStock > 0))
+        //     .Select(g => new
+        //     {
+        //         Category = g.Key,
+        //         Products = g.ToList()
+        //     });
+        //foreach (var category in grouped)
+        //{
+        //    Console.WriteLine($"Category: {category.Category}");
+        //    foreach (var product in category.Products)
+        //    {
+        //        Console.WriteLine($"   {product.ProductName} - Units in Stock: {product.UnitsInStock}");
+        //    }
+        //}
+        #endregion
+
+        #region Use group by to partition a list of numbers by their remainder when divided by 5
+
+        List<int> numbers = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+
+        var partition = numbers.GroupBy(n => n % 5 );
+
+        foreach (var item in partition)
         {
-            Console.WriteLine($"Category: {category.Category}");
-            foreach (var product in category.Products)
-            {
-                Console.WriteLine($"   {product.ProductName} - Units in Stock: {product.UnitsInStock}");
-            }
+            Console.WriteLine($"Remainder {item.Key}: {string.Join(", ", item)}");
+            Console.WriteLine();
         }
         #endregion
 
@@ -415,25 +429,18 @@ class Program
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
