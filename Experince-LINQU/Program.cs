@@ -505,15 +505,25 @@ class Program
 
         #region  Determine if the value of int in an array match their position in the array.
 
+        //int[] Arr = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+
+        //var matches = Arr.Select((value, index) => value == index);
+
+        //foreach (var item in matches)
+        //{
+        //    Console.WriteLine(item);
+        //}
+        #endregion
+
+        #region  Determine if the value of int in an array match their position in the array.
         int[] Arr = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
-
-        var matches = Arr.Select((value, index) => value == index);
-
+        var matches = Arr.Select((value, index) => new { Value = value, Index = index, IsMatch = value == index });
         foreach (var item in matches)
         {
-            Console.WriteLine(item);
+            Console.WriteLine($"Value: {item.Value}, Index: {item.Index}, Is Match: {item.IsMatch}");
         }
         #endregion
+
 
 
 
