@@ -459,12 +459,30 @@ class Program
 
         #region Return a sequence of just the names of a list of products.
 
-        var prodactName = from p in ListGenerators.ProductList
-                          select p.ProductName;
+        //var prodactName = from p in ListGenerators.ProductList
+        //                  select p.ProductName;
 
-        foreach (var item in prodactName)
+        //foreach (var item in prodactName)
+        //{
+        //    Console.WriteLine(item);
+        //}
+        #endregion
+
+        #region Produce a sequence of the uppercase and lowercase versions of each word in the original array (Anonymous Types).
+
+        string[] words = { "aPPLE", "BlUeBeRrY", "cHeRry" };
+
+        var upercaseandlowecase = words.Select(words => new
         {
-            Console.WriteLine(item);
+            Upercase = words.ToUpper(),
+            Lowercase = words.ToLower()
+        });
+
+        foreach (var item in upercaseandlowecase)
+        {
+            Console.WriteLine($"Upercase: {item.Upercase} ");
+            Console.WriteLine($"Lowercase: {item.Lowercase}");
+            Console.WriteLine();
         }
         #endregion
 
