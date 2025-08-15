@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Intrinsics.X86;
 using System.Security.Cryptography;
+using System.Text.RegularExpressions;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -488,21 +489,31 @@ class Program
 
         #region  Produce a sequence containing some properties of Products, including UnitPrice which is renamed to Price in the resulting type.
 
-        var productDetails = ListGenerators.ProductList.Select(p => new
-        {
-            p.ProductName,
-            p.Category,
-            Price = p.UnitPrice, 
-            p.UnitsInStock
-        });
-        foreach (var item in productDetails)
-        {
-            Console.WriteLine($"Product Name: {item.ProductName}, Category: {item.Category}, Price: {item.Price}, Units In Stock: {item.UnitsInStock}");
-        }
+        //var productDetails = ListGenerators.ProductList.Select(p => new
+        //{
+        //    p.ProductName,
+        //    p.Category,
+        //    Price = p.UnitPrice, 
+        //    p.UnitsInStock
+        //});
+        //foreach (var item in productDetails)
+        //{
+        //    Console.WriteLine($"Product Name: {item.ProductName}, Category: {item.Category}, Price: {item.Price}, Units In Stock: {item.UnitsInStock}");
+        //}
 
         #endregion
 
+        #region  Determine if the value of int in an array match their position in the array.
 
+        int[] Arr = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+
+        var matches = Arr.Select((value, index) => value == index);
+
+        foreach (var item in matches)
+        {
+            Console.WriteLine(item);
+        }
+        #endregion
 
 
 
